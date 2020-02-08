@@ -114,7 +114,7 @@
          include('connection.php');
          $conn=connectDB();
 
-         $sql="select*from room where prefer='Bachelor'";
+         $sql="select*from room where prefer='Bachelor' ORDER BY id DESC";
          $result=mysqli_query($conn,$sql);   
 
  ?>

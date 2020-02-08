@@ -120,7 +120,7 @@
 
          include('connection.php');
          $conn=connectDB();
-         $sql="select*from room where division='$search'";
+         $sql="select*from room where division='$search' ORDER BY id DESC";
          $result=mysqli_query($conn,$sql);
  ?>
 
