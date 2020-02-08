@@ -127,27 +127,35 @@ session_start();
         <div class="container">
           <div class="select__menu d-none d-md-block text-center">
   
-            <li><a href="add-list.php">Room</a></li>
-            <li><a href="add-list.php">Roommate</a></li>
-            <li><a href="add-list.php">House</a></li>
-            <li><a href="add-list.php">Appartment</a></li>
+            <li><a href="add-list.php?search=Room">Room</a></li>
+            <li><a href="add-list2.php">Roommate</a></li>
+            <li><a href="add-list.php?search=House">House</a></li>
+            <li><a href="add-list.php?search=Appartment">Appartment</a></li>
     
           </div>
+              
+            <form action="add-list3.php" method="POST">
+           
+
     
-          <div class="form-row">
+         <div class="form-row">
+           
             <div class="form-group col-md-8 m-auto">
-              <div class="input-group">
-                <div class="input-group-prepend banner__input-group-prepand">
-                  <div class="input-group-text banner__input-group-text"><i class="fas fa-map-marker-alt"></i>
+               <div class="input-group">
+                  <div class="input-group-prepend banner__input-group-prepand">
+                     <div class="input-group-text banner__input-group-text">
+                        <i class="fas fa-map-marker-alt"></i>
+                     </div>
                   </div>
-                </div>
-                <input class="form-control banner__form-control-search" type="search"
+                  <input class="form-control banner__form-control-search" name="search" type="search"
                   placeholder="Enter an address, neighborhood, city or ZIP code" aria-label="Search">
-              </div>
-    
+
+               </div>    
             </div>
     
           </div>
+
+           </form>
           <div class="body__scroll-down text-center">
             <a href="" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
           </div>
@@ -166,48 +174,100 @@ session_start();
 
         <div class="fx1 row">
 
-          <div class="col-md-3 col-sm-6 col-6">
-            <a href="add-list.htm">
-              <div class="item">
-                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
-                <h3><span>Chittagong</span></h3>
-                <h4><span><i class="fas fa-search"></i></span></h4>
-                <p>Chittagong <br> listing</p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-3 col-sm-6 col-6">
-            <a href="add-list.htm">
-              <div class="item">
-                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
-                <h3><span>Chittagong</span></h3>
-                <h4><span><i class="fas fa-search"></i></span></h4>
-                <p>Chittagong <br> listing</p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-3 col-sm-6 col-6">
-            <a href="add-list.htm">
-              <div class="item">
-                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
-                <h3><span>Chittagong</span></h3>
-                <h4><span><i class="fas fa-search"></i></span></h4>
-                <p>Chittagong <br> listing</p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-3 col-sm-6 col-6">
-            <a href="add-list.htm">
-              <div class="item">
-                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
-                <h3><span>Chittagong</span></h3>
-                <h4><span><i class="fas fa-search"></i></span></h4>
-                <p>Chittagong <br> listing</p>
-              </div>
-            </a>
-          </div>
+      <?php    
+         include('connection.php');
+         $conn=connectDB();
+         $sql="select*from division";
+         $result=mysqli_query($conn,$sql);
 
+         while ($row=mysqli_fetch_assoc($result)) { ?>
 
+             <div class="col-md-3 col-sm-6 col-6">
+               <a href="add-list3.php?search=<?= $row['name']; ?>">
+                 <div class="item">
+                   <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
+                   <h3><span><?= $row['name']; ?></span></h3>
+                   <h4><span><i class="fas fa-search"></i></span></h4>
+                   <p><?= $row['name']; ?> <br> listing</p>
+                 </div>
+               </a>
+             </div>
+         <?php }?>
+
+        <!--  <div class="col-md-3 col-sm-6 col-6">
+            <a href="add-list.htm">
+              <div class="item">
+                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
+                <h3><span>Chittagong</span></h3>
+                <h4><span><i class="fas fa-search"></i></span></h4>
+                <p>Chittagong <br> listing</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-6 col-6">
+            <a href="add-list.htm">
+              <div class="item">
+                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
+                <h3><span>Chittagong</span></h3>
+                <h4><span><i class="fas fa-search"></i></span></h4>
+                <p>Chittagong <br> listing</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-6 col-6">
+            <a href="add-list.htm">
+              <div class="item">
+                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
+                <h3><span>Chittagong</span></h3>
+                <h4><span><i class="fas fa-search"></i></span></h4>
+                <p>Chittagong <br> listing</p>
+              </div>
+            </a>
+          </div>
+        </div> -->
+
+       <!--  <div class="fx1 row">
+
+          <div class="col-md-3 col-sm-6 col-6">
+            <a href="add-list.htm">
+              <div class="item">
+                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
+                <h3><span>Chittagong</span></h3>
+                <h4><span><i class="fas fa-search"></i></span></h4>
+                <p>Chittagong <br> listing</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-6 col-6">
+            <a href="add-list.htm">
+              <div class="item">
+                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
+                <h3><span>Chittagong</span></h3>
+                <h4><span><i class="fas fa-search"></i></span></h4>
+                <p>Chittagong <br> listing</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-6 col-6">
+            <a href="add-list.htm">
+              <div class="item">
+                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
+                <h3><span>Chittagong</span></h3>
+                <h4><span><i class="fas fa-search"></i></span></h4>
+                <p>Chittagong <br> listing</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-6 col-6">
+            <a href="add-list.htm">
+              <div class="item">
+                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
+                <h3><span>Chittagong</span></h3>
+                <h4><span><i class="fas fa-search"></i></span></h4>
+                <p>Chittagong <br> listing</p>
+              </div>
+            </a>
+          </div>
         </div>
 
         <div class="fx1 row">
@@ -252,55 +312,7 @@ session_start();
               </div>
             </a>
           </div>
-
-
-        </div>
-
-        <div class="fx1 row">
-
-          <div class="col-md-3 col-sm-6 col-6">
-            <a href="add-list.htm">
-              <div class="item">
-                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
-                <h3><span>Chittagong</span></h3>
-                <h4><span><i class="fas fa-search"></i></span></h4>
-                <p>Chittagong <br> listing</p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-3 col-sm-6 col-6">
-            <a href="add-list.htm">
-              <div class="item">
-                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
-                <h3><span>Chittagong</span></h3>
-                <h4><span><i class="fas fa-search"></i></span></h4>
-                <p>Chittagong <br> listing</p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-3 col-sm-6 col-6">
-            <a href="add-list.htm">
-              <div class="item">
-                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
-                <h3><span>Chittagong</span></h3>
-                <h4><span><i class="fas fa-search"></i></span></h4>
-                <p>Chittagong <br> listing</p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-3 col-sm-6 col-6">
-            <a href="add-list.htm">
-              <div class="item">
-                <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
-                <h3><span>Chittagong</span></h3>
-                <h4><span><i class="fas fa-search"></i></span></h4>
-                <p>Chittagong <br> listing</p>
-              </div>
-            </a>
-          </div>
-
-
-        </div>
+        </div> -->
 
       </div>
     </div>

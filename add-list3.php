@@ -110,17 +110,19 @@
         </div>
       </div>
 
-      <?php
-      if (isset($_GET['search'])) {
-         $search = $_GET['search'];
+   <?php
+      if (isset($_POST['search'])) {
+         $search = $_POST['search'];
+
+      }elseif (isset($_GET['search'])) {
+         $search = $_GET['search']; 
       }
+
          include('connection.php');
          $conn=connectDB();
-         $sql="select*from room where rentType='$search' AND prefer!='Bachelor'";
+         $sql="select*from room where division='$search'";
          $result=mysqli_query($conn,$sql);
-      ?>
-
-
+ ?>
 
 <style type="text/css">
    .table { font-size: 18px;}
@@ -136,14 +138,14 @@
       <tbody> 
          <?php while ($row=mysqli_fetch_assoc($result)) { ?>
 
-            <tr >
+            <tr>
                
                <td>
                   <!-- <div class="col-md-4 text-center"> -->
                      <!-- <div class="add__list--img"> -->
                         <div class="add---img text-center">
                            <a href="listing-user.php?id=<?=$row['id']; ?>">
-                              <img src="<?=$row['image']; ?>" class="img-fluid" height="240" width="360" alt="Image not found">
+                              <img src="<?=$row['image']; ?>" class="img-fluid" height="42" width="400" alt="Image not found">
                            </a>
                         </div>
                      <!-- </div>   -->

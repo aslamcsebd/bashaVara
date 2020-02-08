@@ -110,17 +110,14 @@
         </div>
       </div>
 
-      <?php
-      if (isset($_GET['search'])) {
-         $search = $_GET['search'];
-      }
+   <?php      
          include('connection.php');
          $conn=connectDB();
-         $sql="select*from room where rentType='$search' AND prefer!='Bachelor'";
-         $result=mysqli_query($conn,$sql);
-      ?>
 
+         $sql="select*from room where prefer='Bachelor'";
+         $result=mysqli_query($conn,$sql);   
 
+ ?>
 
 <style type="text/css">
    .table { font-size: 18px;}

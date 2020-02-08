@@ -28,7 +28,7 @@
         <nav class="navbar navbar-expand-lg header__navbar fixed-top">
             <div class="container">
                 <div class="company__logo">
-                    <a class="navbar-brand header__navbar-brand" href="index.htm">
+                    <a class="navbar-brand header__navbar-brand" href="index.php">
                         <img src="./asset/image/main--logo.png" class="img-fluid company--image" alt="">
 
                     </a>
@@ -73,6 +73,18 @@
                 <div class="row">
                     <div class="col-md-7 m-auto">
                         <form action=" " method="POST" enctype="multipart/form-data">
+
+                           <div class="form-group">
+                                <label for="">Type</label>
+                                <select name="rentType" class="form-control form__room-control" id="" required>
+                                    <option value="">Select</option>
+                                    <option value="Room">Room</option>
+                                    <option value="Roommate">Roommate</option>
+                                    <option value="House">House</option>   
+                                    <option value="Appartment">Appartment</option>   
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label for="">Room Rent Information</label>
                                 <input type="text" name="roomInfo" class="form-control form__room-control" placeholder="Example: 2 Room Rent for Family at Rajshahi District" id="" required>
@@ -98,8 +110,7 @@
                                 <select name="rentNago" class="form-control form__room-control" id="" required>
                                     <option value="">Select</option>
                                     <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                    
+                                    <option value="No">No</option>   
                                 </select>
                             </div>
                             <div class="form-group">
@@ -113,6 +124,7 @@
                                     <option value="Barishal">Barishal</option>
                                     <option value="Sylhet">Sylhet</option>
                                     <option value="Rangpur">Rangpur</option>
+                                    <option value="Mymensingh">Mymensingh</option>
                                 </select>
                             </div>                           
 
@@ -556,6 +568,7 @@ if (isset($_POST['submit'])) {
    include('connection.php');
    $conn=connectDB();
 
+   $rentType=$_POST['rentType'];
    $roomInfo=$_POST['roomInfo'];
    $date=$_POST['date'];
    $advance=$_POST['advance'];
@@ -583,7 +596,7 @@ if (isset($_POST['submit'])) {
    $image='room_Image/'. $_FILES['image']['name'];
    move_uploaded_file($_FILES['image']['tmp_name'],$image);
 
-   $sql="insert into room values(null, '$roomInfo', '$date', '$advance', '$rent', '$rentNago', '$division', '$addressDetails', '$bedroom', '$dining', '$drawing', '$kitchen', '$bathroom', '$balcony', '$prefer', '$floorNo', '$size', '$garage', '$emergencyEnergy', '$side', '$lift', '$mobile', '$image')";
+   $sql="insert into room values(null, '$rentType', '$roomInfo', '$date', '$advance', '$rent', '$rentNago', '$division', '$addressDetails', '$bedroom', '$dining', '$drawing', '$kitchen', '$bathroom', '$balcony', '$prefer', '$floorNo', '$size', '$garage', '$emergencyEnergy', '$side', '$lift', '$mobile', '$image')";
       $result=mysqli_query($conn,$sql);
 
       if($result) {
