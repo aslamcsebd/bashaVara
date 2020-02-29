@@ -172,7 +172,7 @@ session_start();
       </h1>
       <div class="city__list-content">
 
-        <div class="fx1 row">
+        <div class="fx1 division row">
 
       <?php    
          include('connection.php');
@@ -185,7 +185,7 @@ session_start();
              <div class="col-md-3 col-sm-6 col-6">
                <a href="add-list3.php?search=<?= $row['name']; ?>">
                  <div class="item">
-                   <img src="./asset/image/listing-1.png" class="img-fluid" alt="">
+                   <img src="<?= $row['image']; ?>" class="img-fluid"  alt="">
                    <h3><span><?= $row['name']; ?></span></h3>
                    <h4><span><i class="fas fa-search"></i></span></h4>
                    <p><?= $row['name']; ?> <br> listing</p>

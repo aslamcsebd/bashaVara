@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2020 at 06:05 PM
+-- Generation Time: Feb 29, 2020 at 09:02 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -30,22 +30,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `division` (
   `id` int(50) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` varchar(100) NOT NULL,
+  `image` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `division`
 --
 
-INSERT INTO `division` (`id`, `name`) VALUES
-(1, 'Dhaka'),
-(2, 'Chittagong'),
-(3, 'Rajshahi'),
-(4, 'Khulna'),
-(5, 'Barishal\r\n'),
-(6, 'Sylhet'),
-(7, 'Rangpur'),
-(8, 'Mymensingh');
+INSERT INTO `division` (`id`, `name`, `image`) VALUES
+(1, 'Dhaka', 'division_image/Dhaka.jpg'),
+(2, 'Chittagong', 'division_image/Chittagong.jpg'),
+(3, 'Rajshahi', 'division_image/Rajshahi.jpg'),
+(4, 'Khulna', 'division_image/Khulna.jpg'),
+(5, 'Barishal\r\n', 'division_image/Barishal.jpg'),
+(6, 'Sylhet', 'division_image/Sylhet.jpg'),
+(7, 'Rangpur', 'division_image/Rangpur.jpg'),
+(8, 'Mymensingh', 'division_image/Mymensingh.jpg');
 
 -- --------------------------------------------------------
 
